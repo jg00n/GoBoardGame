@@ -11,8 +11,7 @@ public class Board {
     // Size of rendered tiles.
     public final static int SQUARE_SIZE = 40;
     public final static int START_POS = 50;
-    public final static int BOARDER_SIZE = 10;
-    public final static int BOARD_WIDTH = (DEFAULT_SIZE * (SQUARE_SIZE) + (BOARDER_SIZE * 2) + START_POS);
+    public final static int BOARD_WIDTH = (DEFAULT_SIZE * SQUARE_SIZE + START_POS);
     public final static Dimension BOARD_DIMENSION = new Dimension(
             BOARD_WIDTH,
             BOARD_WIDTH);
@@ -37,12 +36,6 @@ public class Board {
 
     public void renderBoard(Graphics g, int square_size, int start_x, int start_y) {
         Color woodColor = new Color(204, 119, 34);
-        // Draw the boarder around the entire game board.
-        g.setColor(Color.BLACK);
-        g.drawRect(start_x - BOARDER_SIZE, start_y - BOARDER_SIZE, BOARD_WIDTH, BOARD_WIDTH);
-        g.setColor(woodColor);
-        g.fill3DRect(start_x - BOARDER_SIZE, start_y - BOARDER_SIZE, BOARD_WIDTH, BOARD_WIDTH, true);
-
         // Draw the in game tiles.
         for (int row = 0; row < size; row++) {
             for (int col = 0; col < size; col++) {
@@ -170,7 +163,12 @@ public class Board {
     }
 
     public char getPiece(int row, int col) {
-        return gameBoard[row][col].getPiece();
+        if (isValidPosition(row,col)){
+            return gameBoard[row][col].getPiece();
+        } else{
+            //return null character. (Boilerplate style fix)
+            return '\0';
+        }
     }
 
     private boolean isValidPosition(int row, int col) {

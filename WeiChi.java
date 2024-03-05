@@ -20,7 +20,6 @@ public class WeiChi {
     private static void createAndShowGUI(){
         frame = new JFrame("Wei-Chi Game");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(800,800);
         weiChiBoard = new Board();
         gameBoardGUI = new GameBoardGUI(weiChiBoard, Board.SQUARE_SIZE, Board.START_POS, Board.START_POS);
 
@@ -60,7 +59,8 @@ public class WeiChi {
                 }
             }
         });
-
+        
+        frame.pack();
         frame.setVisible(true);
     }
    
@@ -73,7 +73,7 @@ public class WeiChi {
     }
     private static void resetPlayerTurnLabel(){
         frame.setTitle("WeiChi Game - Player 1's Turn");
-        turnLabel.setText("Player 1's Turn.");
+        turnLabel.setText("Player 1's Turn");
         currentPlayerColor = 'B';
     }
 }
