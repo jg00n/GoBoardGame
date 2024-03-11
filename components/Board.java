@@ -112,6 +112,39 @@ public class Board {
         
         tile2D.setColor(Color.BLACK);
         tile2D.setStroke(new BasicStroke(2.0f));
+
+        if (DebugSettings.isDebug()) {
+            switch (direction) {
+                case 'N':
+                    tile.setColor(Color.RED);
+                    break;
+                case 'E':
+                    tile.setColor(Color.YELLOW);
+                    break;
+                case 'S':
+                    tile.setColor(Color.GREEN);
+                    break;
+                case 'W':
+                    tile.setColor(Color.BLUE);
+                    break;
+                case '1':
+                    tile.setColor(Color.CYAN);
+                    break;
+                case '2':
+                    tile.setColor(Color.MAGENTA);
+                    break;
+                case '3':
+                    tile.setColor(Color.LIGHT_GRAY);
+                    break;
+                case '4':
+                    tile.setColor(Color.DARK_GRAY);
+                    break;
+                // Add cases for other directions as needed
+                default: // Case for C
+                    // No specific color for default case
+                    break;
+            }
+        }
         // Determine edge case
         switch (direction) {
             case 'N':

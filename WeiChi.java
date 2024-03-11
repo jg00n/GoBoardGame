@@ -12,8 +12,10 @@ public class WeiChi {
     private static GameBoardGUI gameBoardGUI;
     private static GameBoardPanel gamePanel;
     private static char currentPlayerColor = 'B';
+    
 
     public static void main(String[] args) {
+        DebugSettings.setDebug(false);
         SwingUtilities.invokeLater(() -> createAndShowGUI());
     }
 
@@ -30,7 +32,6 @@ public class WeiChi {
         System.out.println("GameGUI size: " + gameBoardGUI.getSize());
         frame.getContentPane().add(gameBoardGUI, BorderLayout.CENTER);
         frame.getContentPane().add(gamePanel, BorderLayout.CENTER);
-
 
         // initialize
         resetPlayerTurnLabel();
@@ -49,6 +50,8 @@ public class WeiChi {
 
                 if (weiChiBoard.getPiece(row, col) == ' ') {
                     weiChiBoard.placePiece(row, col, currentPlayerColor);
+                    char currentPlayer = (currentPlayerColor == 'B') ? '1' : '2';
+                    gamePanel.log("Player " + currentPlayer + " placed Piece at [" + row + ',' + col + "]");
                     updatePlayerTurnLabel();
                     gameBoardGUI.repaint();
                 }

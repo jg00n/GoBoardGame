@@ -22,6 +22,7 @@ public class GameBoardPanel extends JPanel{
 
     public GameBoardPanel(){
         initializeComponents();
+        if(DebugSettings.isDebug())log("DEBUG MODE");
     }
 
     private void initializeComponents(){
@@ -88,6 +89,7 @@ public class GameBoardPanel extends JPanel{
         }
         currentPlayer = "Player 1";
         updateDisplay();
+        if(DebugSettings.isDebug())log("DEBUG MODE");
         log("Game Reset");
     }
 
@@ -111,7 +113,7 @@ public class GameBoardPanel extends JPanel{
     }
     public void switchPlayer(){
         currentPlayer = (currentPlayer.equals("Player 1"))? "Player 2": "Player 1";
-        log("Turn switched to "+ currentPlayer);
+        if(DebugSettings.isDebug())log("Turn switched to "+ currentPlayer);
         updateDisplay();
     }
 

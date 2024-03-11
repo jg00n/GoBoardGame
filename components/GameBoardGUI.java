@@ -41,7 +41,7 @@ public class GameBoardGUI extends JPanel {
         SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
         String timestamp = dateFormat.format(now);
         Color mahogany = new Color(0x764332);
-        System.out.printf("[%s] - Rendered Board%n", timestamp);
+        if(DebugSettings.isDebug())System.out.printf("[%s] - Rendered Board%n", timestamp);
         super.paintComponent(g);
         g.setColor(mahogany);
         g.fillRect(startX - borderSize, startY - borderSize, Board.BOARD_DIMENSION.width + 2 * borderSize,
